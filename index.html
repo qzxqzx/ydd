@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <link rel="stylesheet" href="css/reset.min.css"/>
+    <link rel="stylesheet" href="css/swiper.min.css"/>
+    <link rel="stylesheet" href="css/index.css"/>
+    <style>
+        html{
+            font-size: 100px;
+        }
+    </style>
+    <script>
+        document.documentElement.style.fontSize=document.documentElement.clientWidth/600*100+'px';
+    </script>
+</head>
+<body>
+<div class="main">
+    <div class="music">
+        <audio src="" loop preload="none" id="audioMusic"></audio>
+    </div>
+    <!--内容-->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide slide1">
+                <div class="yuan">
+                    <div class="words">
+                        <span style="margin-bottom: 3px">简</span>
+                        <span class="abc">R&nbsp; &nbsp;E&nbsp; &nbsp;S&nbsp; &nbsp;U&nbsp; &nbsp;M&nbsp; &nbsp;E</span>
+                        <span style="margin-top: 3px">历</span>
+                    </div>
+
+                </div>
+                <div class="down">
+                    <div class="left fl">
+                        <img src="img/left.png" alt=""/>
+                    </div>
+                    <div class="middle fl">
+                        <span class="red">邱 振 侠</span>
+                        <span class="white">的 简 历</span>
+                    </div>
+                    <div class="right fl">
+                        <img src="img/left.png" alt=""/>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide slide2">
+                <div class="top">
+                    <div class="left">
+                        <span>简</span>
+                        <span style="top: 50px;">历</span>
+                    </div>
+                    <div class="middle">
+                        <img src="img/left.png" alt=""/>
+                    </div>
+                    <div class="right">
+                        <img src="img/mmexport1416317762610.jpg" alt=""/>
+                    </div>
+                </div>
+                <div class="info">
+                    <ul>
+                        <li><span>name:</span><span>邱振侠</span></li>
+                        <li><span>tel:</span><span>13716453565</span></li>
+                        <li><span>qq:</span><span>517197107</span></li>
+                        <li><span>email:</span><span>517197107@qq.com</span></li>
+                        <li><span>address:</span><span>北京</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="swiper-slide slide3">
+                <div class="top">
+                    <div class="wrap">
+                        <ul>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="middle">工作技能</div>
+                <div class="bottom">
+                    <div class="th">
+                        <span>Nodejs</span>
+                        <span>JQ</span>
+                        <span>React</span>
+                        <span>H5</span>
+                        <span>CSS3</span>
+                        <span>JS</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="swiper-slide slide4">
+                <div class="top"><img src="img/4-1.png" alt=""/></div>
+                <div class="left1"><img src="img/4-2.png" alt=""/></div>
+                <div class="left2"><img src="img/4-3.png" alt=""/></div>
+                <div class="left3"><img src="img/4-4.png" alt=""/></div>
+                <div class="bottom"><img src="img/4-5.png" alt=""/></div>
+                <div class="center">
+                    <h3>工作经历</h3>
+
+                    <div class="expirence-box">
+                        <div class="expirence-left-box fl">
+                            <div class="r1">
+                                <img src="img/4-6.png">
+                            </div>
+                            <div class="r2">
+                                <img src="img/4-6.png">
+                            </div>
+                            <div class="r3">
+                                <img src="img/4-6.png">
+                            </div>
+                        </div>
+
+                        <div class="expirence-right-box fl">
+                            <div class="section1">
+                                <label>2010</label>
+
+                                <div class="hline"></div>
+                                <div class="company">新余新和科技 电脑维修</div>
+                            </div>
+
+                            <div class="section2">
+                                <label>2013</label>
+
+                                <div class="hline"></div>
+                                <div class="company">北京云纵信息技术有限公司</div>
+                            </div>
+
+                            <div class="section3">
+                                <label>2015</label>
+
+                                <div class="hline"></div>
+                                <div class="company">新余新和科技 电脑维修</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
+<script src="js/swiper.min.js"></script>
+<script>
+    //初始化swiper
+    new Swiper(".swiper-container", {
+        direction: "vertical",
+        loop: true,
+        effect:'flip',
+        onSlideChangeEnd: function (swiper) {
+            var slideAry = swiper.slides,//获取当前所有活动块(包含loop模式下前后添加的两个模块)
+                    curIn = swiper.activeIndex,//获取当前展示活动块的索引
+                    total = slideAry.length;
+            var targetId='slide';
+            switch (curIn){
+                case 0:
+                    targetId+=total-2;
+                    break;
+                case total-1:
+                    targetId+=1;
+                    break;
+                default :
+                    targetId+=curIn;
+            }
+            //给当前的活动块添加ID,还要把其他的移出
+            [].forEach.call(slideAry, function (item,index ) {
+                if(curIn===index){
+                    item.id=targetId;
+                    return;
+                }
+                item.id=null;
+            });
+
+        }
+
+
+    })
+</script>
